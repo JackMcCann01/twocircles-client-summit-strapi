@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * summit-map router
+ * attendee router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::summit-map.summit-map');
+module.exports = createCoreRouter('api::attendee.attendee');

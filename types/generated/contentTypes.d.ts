@@ -430,6 +430,38 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAttendeeAttendee extends Struct.CollectionTypeSchema {
+  collectionName: 'attendees';
+  info: {
+    displayName: 'Attendee';
+    pluralName: 'attendees';
+    singularName: 'attendee';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    company_logo: Schema.Attribute.Media<'images' | 'files'>;
+    company_name: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::attendee.attendee'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    region: Schema.Attribute.Enumeration<['EMEA', 'US']> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
   collectionName: 'speakers';
   info: {
@@ -471,36 +503,6 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::summit-session.summit-session'
     >;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiSummitMapSummitMap extends Struct.CollectionTypeSchema {
-  collectionName: 'summit_maps';
-  info: {
-    displayName: 'Summit Map';
-    pluralName: 'summit-maps';
-    singularName: 'summit-map';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::summit-map.summit-map'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    region: Schema.Attribute.Enumeration<['EMEA', 'US']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -594,42 +596,6 @@ export interface ApiTicketInfoTicketInfo extends Struct.CollectionTypeSchema {
     region: Schema.Attribute.Enumeration<['EMEA', 'US']> &
       Schema.Attribute.Required;
     see_more_info_label: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiTicketProfileTicketProfile
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'ticket_profiles';
-  info: {
-    displayName: 'Ticket Profile';
-    pluralName: 'ticket-profiles';
-    singularName: 'ticket-profile';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    company: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    external_id: Schema.Attribute.String & Schema.Attribute.Unique;
-    first_name: Schema.Attribute.String;
-    job_title: Schema.Attribute.String;
-    last_name: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::ticket-profile.ticket-profile'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    region: Schema.Attribute.Enumeration<['EMEA', 'US']> &
-      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1181,11 +1147,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::attendee.attendee': ApiAttendeeAttendee;
       'api::speaker.speaker': ApiSpeakerSpeaker;
-      'api::summit-map.summit-map': ApiSummitMapSummitMap;
       'api::summit-session.summit-session': ApiSummitSessionSummitSession;
       'api::ticket-info.ticket-info': ApiTicketInfoTicketInfo;
-      'api::ticket-profile.ticket-profile': ApiTicketProfileTicketProfile;
       'api::venue-info.venue-info': ApiVenueInfoVenueInfo;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

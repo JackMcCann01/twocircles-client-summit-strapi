@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * summit-map controller
+ * attendee controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::summit-map.summit-map');
+module.exports = createCoreController('api::attendee.attendee');

@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "attendees",
+  "info": {
+    "singularName": "attendee",
+    "pluralName": "attendees",
+    "displayName": "Attendee"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "company_name": {
+      "type": "string",
+      "required": true
+    },
+    "company_logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "region": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "EMEA",
+        "US"
+      ]
+    }
+  }
+}

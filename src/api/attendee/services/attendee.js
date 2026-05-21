@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * summit-map service
+ * attendee service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::summit-map.summit-map');
+module.exports = createCoreService('api::attendee.attendee');
