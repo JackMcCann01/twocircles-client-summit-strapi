@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "explore_social_snapshots",
+  "info": {
+    "singularName": "explore-social-snapshot",
+    "pluralName": "explore-social-snapshots",
+    "displayName": "Instagram Config"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "region": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "EMEA",
+        "US"
+      ]
+    },
+    "instagram_handle": {
+      "type": "string",
+      "required": true
+    },
+    "instagram_profile_url": {
+      "type": "string",
+      "required": true
+    },
+    "large_thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "top_right_thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "bottom_right_thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}

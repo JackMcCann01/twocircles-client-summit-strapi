@@ -462,6 +462,44 @@ export interface ApiAttendeeAttendee extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiExploreSocialSnapshotExploreSocialSnapshot
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'explore_social_snapshots';
+  info: {
+    displayName: 'Instagram Config';
+    pluralName: 'explore-social-snapshots';
+    singularName: 'explore-social-snapshot';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bottom_right_thumbnail: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    instagram_handle: Schema.Attribute.String & Schema.Attribute.Required;
+    instagram_profile_url: Schema.Attribute.String & Schema.Attribute.Required;
+    large_thumbnail: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::explore-social-snapshot.explore-social-snapshot'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    region: Schema.Attribute.Enumeration<['EMEA', 'US']> &
+      Schema.Attribute.Required;
+    top_right_thumbnail: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
   collectionName: 'speakers';
   info: {
@@ -1148,6 +1186,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::attendee.attendee': ApiAttendeeAttendee;
+      'api::explore-social-snapshot.explore-social-snapshot': ApiExploreSocialSnapshotExploreSocialSnapshot;
       'api::speaker.speaker': ApiSpeakerSpeaker;
       'api::summit-session.summit-session': ApiSummitSessionSummitSession;
       'api::ticket-info.ticket-info': ApiTicketInfoTicketInfo;
