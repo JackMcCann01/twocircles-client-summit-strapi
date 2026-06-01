@@ -66,6 +66,10 @@
     },
     "see_more_info_label": {
       "type": "string"
+    },
+    "ticket_title": {
+      "type": "string",
+      "required": true
     }
   }
 }

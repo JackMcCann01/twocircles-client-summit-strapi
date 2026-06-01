@@ -466,7 +466,7 @@ export interface ApiExploreSocialSnapshotExploreSocialSnapshot
   extends Struct.CollectionTypeSchema {
   collectionName: 'explore_social_snapshots';
   info: {
-    displayName: 'Instagram Config';
+    displayName: 'Explore';
     pluralName: 'explore-social-snapshots';
     singularName: 'explore-social-snapshot';
   };
@@ -479,6 +479,8 @@ export interface ApiExploreSocialSnapshotExploreSocialSnapshot
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    hero_subtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    hero_title: Schema.Attribute.String & Schema.Attribute.Required;
     instagram_handle: Schema.Attribute.String & Schema.Attribute.Required;
     instagram_profile_url: Schema.Attribute.String & Schema.Attribute.Required;
     large_thumbnail: Schema.Attribute.Media<'images' | 'files'> &
@@ -492,6 +494,7 @@ export interface ApiExploreSocialSnapshotExploreSocialSnapshot
     publishedAt: Schema.Attribute.DateTime;
     region: Schema.Attribute.Enumeration<['EMEA', 'US']> &
       Schema.Attribute.Required;
+    summit_date: Schema.Attribute.String & Schema.Attribute.Required;
     top_right_thumbnail: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -634,6 +637,7 @@ export interface ApiTicketInfoTicketInfo extends Struct.CollectionTypeSchema {
     region: Schema.Attribute.Enumeration<['EMEA', 'US']> &
       Schema.Attribute.Required;
     see_more_info_label: Schema.Attribute.String;
+    ticket_title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

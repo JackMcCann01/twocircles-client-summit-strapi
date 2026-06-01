@@ -4,7 +4,7 @@
   "info": {
     "singularName": "explore-social-snapshot",
     "pluralName": "explore-social-snapshots",
-    "displayName": "Instagram Config"
+    "displayName": "Explore"
   },
   "options": {
     "draftAndPublish": true
@@ -53,6 +53,18 @@
         "images",
         "files"
       ]
+    },
+    "hero_title": {
+      "type": "string",
+      "required": true
+    },
+    "hero_subtitle": {
+      "type": "string",
+      "required": true
+    },
+    "summit_date": {
+      "type": "string",
+      "required": true
     }
   }
 }
