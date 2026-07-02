@@ -15,6 +15,9 @@
       "type": "string",
       "required": true
     },
+    "job_title": {
+      "type": "string"
+    },
     "company_name": {
       "type": "string",
       "required": true
