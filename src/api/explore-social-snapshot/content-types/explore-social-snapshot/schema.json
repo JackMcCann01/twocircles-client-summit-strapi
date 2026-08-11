@@ -65,6 +65,15 @@
     "summit_date": {
       "type": "string",
       "required": true
+    },
+    "find_out_more_url": {
+      "type": "string"
+    },
+    "follow_up_questions_url": {
+      "type": "string"
+    },
+    "feedback_url": {
+      "type": "string"
     }
   }
 }

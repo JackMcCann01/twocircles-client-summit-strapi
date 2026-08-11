@@ -36,6 +36,15 @@
     },
     "contacts": {
       "type": "text"
+    },
+    "tour_title": {
+      "type": "string"
+    },
+    "tour_subtitle": {
+      "type": "string"
+    },
+    "tour_url": {
+      "type": "string"
     }
   }
 }
