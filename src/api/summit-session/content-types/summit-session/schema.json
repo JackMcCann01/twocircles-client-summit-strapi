@@ -29,6 +29,14 @@
     "track": {
       "type": "string"
     },
+    "agenda_type": {
+      "type": "enumeration",
+      "enum": [
+        "core",
+        "optional",
+        "utility"
+      ]
+    },
     "start_time": {
       "type": "datetime",
       "required": true
